@@ -52,24 +52,26 @@ const JoinHands = () => {
   const elementsurl = [{
     url:'/MultilingualProgram'
   },{
-    url:'/'
+    url:'/AdmissionCampaign'
   },{
-    url:'/'
+    url:'/ParentSurvey'
   },{
-    url:'/'
+    url:'/AutomatedFee'
   },{
-    url:'/'
+    url:'/AutomatedGreeting'
   },{
-    url:'/'
+    url:'/ExperienceERP'
   },{
-    url:'/'
+    url:'/MobileApps'
   },{
-    url:'/'
+    url:'/MinutesMastery'
   },{
-    url:'/'
+    url:'/VirtualAssistants'
   },{
     url:'/'
   },]
+
+  
   return (
     <>
       <div className="jh-main-cont">

@@ -309,7 +309,7 @@ a:hover{
   border: none;
   cursor: pointer;
   background: #f7f7f7;
-  transition: 0.2s all ease-in;
+  transition: 1.5s all ease-in;
 }
 .tab{
   gap: 1rem;
@@ -981,12 +981,14 @@ h4, .features-subheading{
   position: relative;
   border-radius: 25px;
   flex-direction: column;
-  background: var(--rootpurple);
+  background: radial-gradient(ellipse at bottom, #9b3bdf, #47097a);
+
+  /* background: var(--rootpurple); */
   justify-content: space-between;
   box-shadow: 0px 5px 32px 0 #707070dc;
 }
 .faq-form{
-  gap: 1rem;
+  gap: 1.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -1114,7 +1116,7 @@ input::-webkit-inner-spin-button {
   position: relative;
   font-family: 'Poppins', sans-serif;
 }
-.jh-content::after{
+/* .jh-content::after{
   content: "";
   top: 3rem;
   left: -35rem;
@@ -1124,7 +1126,7 @@ input::-webkit-inner-spin-button {
   background: #f7f7f779;
   position: absolute;
   box-shadow: 0 8px 50px 0 rgba(162, 49, 214, 0.479);
-}
+} */
 
 .jh-sub-cont2{
   height: 80vh;
@@ -1159,7 +1161,7 @@ input::-webkit-inner-spin-button {
 .jh-sub-q:hover{
   box-shadow: 0 8px 50px 0 rgba(162, 49, 214, 0.479);
 }
-.jh-sub-q::after{
+/* .jh-sub-q::after{
   content: "";
   top: 3.6rem;
   width: 21%;
@@ -1167,13 +1169,13 @@ input::-webkit-inner-spin-button {
   left:-50rem;
   position: absolute;
   background: #6f01dca4;
-}
+} */
 
 .jh-sub-ans{
   font-weight: 400;
   position: relative;
 }
-.jh-sub-ans::after{
+/* .jh-sub-ans::after{
   content: "";
   top: 2rem;
   right: -40rem;
@@ -1190,7 +1192,7 @@ input::-webkit-inner-spin-button {
   height: 5px;
   background: #8f15b483;
   position: absolute;
-}
+} */
 .jh-ans-highlight{
   font-weight: 500;
   color: var(--rootpurple);
@@ -1214,8 +1216,8 @@ input::-webkit-inner-spin-button {
 }
 .joinhands-cards{
   gap: 2rem;
-  display: flex;
   width: 100vw;
+  display: flex;
   padding: 1rem 0rem;
   flex-direction: column;
 }
@@ -1270,7 +1272,7 @@ input::-webkit-inner-spin-button {
 .jh-card-left::after{
   content: "";
   top: 10rem;
-  left: 38.2rem;
+  left: 100%;
   width: 60vw;
   height: 1px;
   background: #fff;
@@ -1285,7 +1287,7 @@ input::-webkit-inner-spin-button {
 .jh-card-right::after{
   content: "";
   top: 9rem;
-  right: 38.2rem;
+  right: 100%;
   width: 60vw;
   height: 1px;
   background: #fff;
@@ -1294,14 +1296,15 @@ input::-webkit-inner-spin-button {
 }
 
 .jh-last-cont{
-  padding: 1.5rem 1rem;
+  padding:3rem 2rem;
+  margin: 2rem 0;
   border-radius: 25px;
   background: var(--rootwhite);
   border: 1px solid var(--rootpurple);
   box-shadow: 0 0 20px 0px rgba(243, 220, 255, 0.5)
 }
 .jh-last-heading{
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   color: transparent;
   text-align: center;

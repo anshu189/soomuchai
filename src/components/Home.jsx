@@ -8,13 +8,12 @@ import { Typewriter } from 'react-simple-typewriter'
 import { HiOutlinePlayCircle } from "react-icons/hi2";
 
 const Home = () => {
-  const [toggleState, setToggleState] = useState(0);
   const [langvalue, setLangvalue] = useState("");
   const [connectvalue, setConnectvalue] = useState("");
   const [riskvalue, setRiskvalue] = useState("");
   const [Videostate, setVideostate] = useState(false);
   const [optnum, setOtpnum] = useState('');
-  
+  const [tabscntr, setTabCntr] = useState(0);
   const customTheme=(theme)=>{
     return{
       ...theme,
@@ -47,9 +46,12 @@ const Home = () => {
     {value:"No",label:"No"},
   ]
 
-  var tabscntr=0;
-  const handletabs=(tabscntr)=>{
-    setToggleState(tabscntr);
+  const handletabs=()=>{
+    if(tabscntr===5){
+      setTabCntr(1)
+    }else{
+      setTabCntr(1+tabscntr)
+    }
   }
 
   // Handle the Demo Function 
@@ -80,30 +82,24 @@ const Home = () => {
             <div className="hero-left-top-cont">
               <div className="hero-heading">90% Educational Institutions</div>
               <div className="tab">
-                <button className={"hero-tab-btn"+(tabscntr === 0?' hero-tab-active':'')}></button>
                 <button className={"hero-tab-btn"+(tabscntr === 1?' hero-tab-active':'')}></button>
                 <button className={"hero-tab-btn"+(tabscntr === 2?' hero-tab-active':'')}></button>
                 <button className={"hero-tab-btn"+(tabscntr === 3?' hero-tab-active':'')}></button>
                 <button className={"hero-tab-btn"+(tabscntr === 4?' hero-tab-active':'')}></button>
+                <button className={"hero-tab-btn"+(tabscntr === 5?' hero-tab-active':'')}></button>
               </div>
-              {/* {subheading.map((items,i)=>{ 
-                  tabscntr++;
-                  console.log(tabscntr);
-                  
-                  return <> */}
                   <div className='hero-subheading'>
                     <Typewriter
-                      words={subheading}
-                      loop={100}
                       cursor
+                      loop={100}
                       cursorStyle='|'
+                      deleteSpeed={1}
                       typeSpeed={100}
-                      deleteSpeed={10}
-                      delaySpeed={10}
-                      onLoopDone={handletabs}
+                      delaySpeed={1000}
+                      words={subheading}
+                      onDelay={handletabs}
                     />
                   </div>
-              {/* })} */}
             </div>
 
             <div className="hero-left-bottom-cont">
