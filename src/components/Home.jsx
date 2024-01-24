@@ -1,19 +1,28 @@
 import Navbar from './Navbar';
 import Select from 'react-select';
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import video from '../assets/vids/video.mp4';
 import { RiCloseFill } from "react-icons/ri";
 import Hands from '../assets/images/hands.svg'
+import { IoShieldCheckmark } from "react-icons/io5";
 import { Typewriter } from 'react-simple-typewriter'
 import { HiOutlinePlayCircle } from "react-icons/hi2";
 
+
 const Home = () => {
-  const [langvalue, setLangvalue] = useState("");
-  const [connectvalue, setConnectvalue] = useState("");
-  const [riskvalue, setRiskvalue] = useState("");
-  const [Videostate, setVideostate] = useState(false);
   const [optnum, setOtpnum] = useState('');
   const [tabscntr, setTabCntr] = useState(0);
+  const [langvalue, setLangvalue] = useState("");
+  const [riskvalue, setRiskvalue] = useState("");
+  const [connectvalue, setConnectvalue] = useState("");
+  const [Otpopup, setOtpopup] = useState(false);
+  const [Videostate, setVideostate] = useState(false);
+  const [getOTP, setGetOTP] = useState("");
+  const selectInputRef1 = useRef();
+  const selectInputRef2 = useRef();
+  const selectInputRef3 = useRef();
+  const selectInputRef4 = useRef();
+
   const customTheme=(theme)=>{
     return{
       ...theme,
@@ -63,9 +72,35 @@ const Home = () => {
     const connectoption = connectvalue.value;
     const riskoption = riskvalue.value;
 
-    // Send Data to backend and scehdule a demo
+    if((demolang && connectoption && riskoption) && !(optnum.length!==10)){
+      setOtpopup(true);
+      // Send Data to backend and scehdule a demo
+
+    }
+    else{
+      alert("Please Choose all the remaining fields!")
+      setOtpopup(false);
+    }
+  }
+
+  // Verify OTP
+  const verifyOTP=()=>{
+    if(getOTP.length !==4){
+      alert("Enter the OTP")
+      setOtpopup(true);
+    }
+    else{
+      setOtpopup(false);
+      selectInputRef1.current.clearValue();
+      selectInputRef2.current.clearValue();
+      selectInputRef3.current.clearValue();
+      selectInputRef4.current.value = null;
+      // Verify it from Backend
+      // Write your code here...
+      
+    }
     
-    console.log(demolang,connectoption,riskoption,optnum);
+  
   }
 
   return (
@@ -73,7 +108,7 @@ const Home = () => {
         <Navbar/>
         <div className="hero-main-cont">
 
-          {Videostate===true?<>
+          {Videostate && <>
             <span className='closeicon' onClick={()=>setVideostate(false)}><RiCloseFill/></span>
             <span className="videospan">
               <video width={"800px"} height={"490px"} 
@@ -81,7 +116,28 @@ const Home = () => {
                 <source src={video} type='video/mp4'/>
               </video>
             </span>
-          </>:null}
+          </>}
+
+          {Otpopup && <>
+            <div className="demo-model-cont">
+            <span style={{zIndex:"9999999"}} className='closeicon' onClick={()=>setOtpopup(false)}><RiCloseFill/></span>
+              <div className="demo-overlay-cont">
+                  <div className="demo-model" style={{gap:"1rem",width:"22%", height:"45%", alignItems:"center", padding:"2rem 0 0 0"}}>
+                      <div className="demo-model-top" style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", widt
+                    :"100%"}}>
+                          <span className="otp-icon"><IoShieldCheckmark /></span>
+                          <div className="demo-model-heading" style={{fontSize:"24px",color:"#2c2c2c", fontFamily:"Inter"}}>Enter OTP Code</div>
+                      </div>             
+                      <div className="demo-model-mid" style={{padding:"0 2rem"}}>
+                            <input type="text" onChange={(e)=>{setGetOTP(e.target.value)}} className="otp-input" maxlength="4" pattern="\d{4}" required/>
+                      </div>    
+                      <div className="demo-model-bottom" style={{ margin:"auto"}}>
+                        <div className="single-blog-demo-btn otp-btn" onClick={verifyOTP}>Verify OTP</div>
+                      </div>
+                  </div>
+              </div> 
+            </div>
+          </>}
 
           <div className="hero-left">
 
@@ -127,9 +183,11 @@ const Home = () => {
             <div className="vertical-right-heading">Boost Your Business</div>
 
             <div className="hero-right-top-cont">
+
               <div className="hero-right-top-heading">30% Growth<br/>with 30 seconds<br/>live demo</div>
                 <div className="select-section">
                     <Select 
+                    ref={selectInputRef1}
                     className='individual-select' 
                     onChange={setLangvalue} 
                     options={langoptions} 
@@ -159,6 +217,7 @@ const Home = () => {
                     />
 
                     <Select 
+                    ref={selectInputRef2}
                     className='individual-select' 
                     onChange={setConnectvalue} 
                     options={connectoptions} 
@@ -188,6 +247,7 @@ const Home = () => {
                     />
                     
                     <Select 
+                    ref={selectInputRef3}
                     className='individual-select' 
                     onChange={setRiskvalue} 
                     options={riskoptions} 
@@ -216,7 +276,7 @@ const Home = () => {
                     }}
                     />
 
-                    <input type="number" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
+                    <input ref={selectInputRef4} pattern='((\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}' maxlength="10" type="text" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
                 </div>
                 <button onClick={handledemosubmit} className="btn select-submit-btn">Submit</button>
             </div>
@@ -232,6 +292,7 @@ const Home = () => {
               </div>
               <span style={{fontSize:"1vw", width:"43vw", fontWeight:"600"}}> 🌐💼🤖 #BusinessSuccess #MultilingualPlatform #AI ERP #5MinuteMastery </span> 
             </div>
+
           </div>
 
         </div>

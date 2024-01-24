@@ -2225,3 +2225,69 @@ input::-webkit-inner-spin-button {
 .forgot-pass:hover, .login-register span:hover,.login-register span{
   color: var(--rootpurple);
 }
+
+
+/* Google Translator Styling */
+#gtranslator-cont{
+  top:92.2%;
+  left:1.2rem;
+  width: 12%;
+  z-index: 9999;
+  position: fixed;
+  animation: 1s backnforth infinite alternate;
+}
+#gtranslator-cont:focus-within{
+  animation: none;
+}
+
+@keyframes backnforth {
+  0%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(-5px);
+  }
+}
+.skiptranslate span{
+  display: none;
+}
+.goog-te-gadget{
+  font-size: 0px;
+}
+.goog-te-gadget .goog-te-combo{
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: #404040;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid var(--rootpurple);
+}
+
+
+/* OTP Styling */
+.otp-icon{
+  font-size: 5vw;
+  color: #3f71f4;
+}
+.otp-input{
+  width: 85%;
+  margin:auto; 
+  outline:none;
+  text-align: center;
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #5a5a5a;
+  padding:0.7rem 1rem;
+  border-radius: 5px;
+  border:1px solid #9a9a9a;
+}
+.otp-btn{
+  width:15vw;
+  color: var(--rootwhite);
+  padding:0.8rem 1rem;
+  background: #5c81e0;
+  border-radius: 5px;
+}
+.otp-btn:hover{
+  background: #3f71f4;
+}

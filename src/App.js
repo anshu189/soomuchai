@@ -7,6 +7,7 @@ import OtherEssentials from './components/OtherEssentials';
 function App() {
   return (
     <div className='main-app'>
+      <div id="gtranslator-cont"></div>
       <div className="header-main-cont">
         <Home/>
       </div>

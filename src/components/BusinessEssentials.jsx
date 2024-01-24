@@ -107,7 +107,7 @@ const BusinessEssentials = () => {
               </div>
           </div>
 
-          {togglepopup===true?
+          {togglepopup && <>
             <div className="demo-model-cont">
               <div className="demo-overlay-cont" onClick={()=>{setTogglepopup(false)}}>
                   <div className="demo-model" style={{gap:"1rem"}}>
@@ -123,7 +123,7 @@ const BusinessEssentials = () => {
                   </div>
               </div> 
             </div>
-        :''}
+        </>}
       
         </div>
     );
