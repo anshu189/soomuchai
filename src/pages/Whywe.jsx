@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const Whywe = () => {
   return (
     <>
-      <div className="main-cont">
+      <div className="whywe-main-cont">
         <Navbar/>
         <div className="whywe-sub-cont">
           <div className="whywe-top-cont">

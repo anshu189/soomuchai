@@ -33,15 +33,18 @@ const Home = () => {
   'Send’s English SMS to parents despite only 30% of them understanding.']
 
   const langoptions = [
+    {value:"",label:"Choose a language",disabled: true},
     {value:"Telugu",label:"Telugu"},
     {value:"Hindi",label:"Hindi"},
     {value:"English",label:"English"},
   ]
   const connectoptions = [
+    {value:"",label:"Parental Connect",disabled: true},
     {value:"SMS",label:"SMS"},
     {value:"Whatsapp",label:"Whatsapp"},
   ]
   const riskoptions = [
+    {value:"",label:"Risk Analysis",disabled: true},
     {value:"Yes",label:"Yes"},
     {value:"No",label:"No"},
   ]
@@ -69,6 +72,7 @@ const Home = () => {
       <div className="home-main-cont">
         <Navbar/>
         <div className="hero-main-cont">
+
           {Videostate===true?<>
             <span className='closeicon' onClick={()=>setVideostate(false)}><RiCloseFill/></span>
             <span className="videospan">
@@ -78,7 +82,9 @@ const Home = () => {
               </video>
             </span>
           </>:null}
+
           <div className="hero-left">
+
             <div className="hero-left-top-cont">
               <div className="hero-heading">90% Educational Institutions</div>
               <div className="tab">
@@ -95,7 +101,7 @@ const Home = () => {
                       cursorStyle='|'
                       deleteSpeed={1}
                       typeSpeed={100}
-                      delaySpeed={1000}
+                      delaySpeed={4000}
                       words={subheading}
                       onDelay={handletabs}
                     />
@@ -103,7 +109,7 @@ const Home = () => {
             </div>
 
             <div className="hero-left-bottom-cont">
-              <span style={{fontSize:'24px'}}>Prime Minister's Support: Narendra Modi</span>
+              <span style={{fontSize:'1.7vw', fontWeight:"800"}}>Prime Minister's Support: Narendra Modi</span>
               <span className='hero-bottom-divider'></span>
               <span className='play-icon' onClick={()=>setVideostate(true)}><HiOutlinePlayCircle />See how it works</span>
               <div className="hero-left-bottom-sub-cont">
@@ -114,10 +120,10 @@ const Home = () => {
               parents, and students. Together, let's transform communication in education! 
               </div>
             </div>
+
           </div>
 
           <div className="hero-right">
-
             <div className="vertical-right-heading">Boost Your Business</div>
 
             <div className="hero-right-top-cont">
@@ -125,12 +131,12 @@ const Home = () => {
                 <div className="select-section">
                     <Select 
                     className='individual-select' 
-                    isSearchable 
                     onChange={setLangvalue} 
                     options={langoptions} 
                     defaultValue={langvalue} 
                     placeholder="Choose Language"
                     theme={customTheme}
+                    isOptionDisabled={(option) => option.disabled}
                     styles={{
                       control: (provided, state) => ({
                         ...provided,
@@ -140,7 +146,7 @@ const Home = () => {
                         padding:"0.1rem",
                         cursor:"pointer",
                         fontFamily:"Helvetica",
-                        fontWeight:"500"
+                        fontWeight:"400"
                       }),
                       option: (provided, state) => ({
                         ...provided,
@@ -154,12 +160,12 @@ const Home = () => {
 
                     <Select 
                     className='individual-select' 
-                    isSearchable 
                     onChange={setConnectvalue} 
                     options={connectoptions} 
                     defaultValue={connectvalue} 
                     placeholder="Parental Connect"
                     theme={customTheme}
+                    isOptionDisabled={(option) => option.disabled}
                     styles={{
                       control: (provided, state) => ({
                         ...provided,
@@ -169,7 +175,7 @@ const Home = () => {
                         padding:"0.1rem",
                         cursor:"pointer",
                         fontFamily:"Helvetica",
-                        fontWeight:"500"
+                        fontWeight:"400"
                       }),
                       option: (provided, state) => ({
                         ...provided,
@@ -183,12 +189,12 @@ const Home = () => {
                     
                     <Select 
                     className='individual-select' 
-                    isSearchable 
                     onChange={setRiskvalue} 
                     options={riskoptions} 
                     defaultValue={riskvalue} 
                     placeholder="Analyze Risk"
                     theme={customTheme}
+                    isOptionDisabled={(option) => option.disabled}
                     styles={{
                       control: (provided, state) => ({
                         ...provided,
@@ -198,7 +204,7 @@ const Home = () => {
                         padding:"0.1rem",
                         cursor:"pointer",
                         fontFamily:"Helvetica",
-                        fontWeight:"500"
+                        fontWeight:"400"
                       }),
                       option: (provided, state) => ({
                         ...provided,
@@ -210,7 +216,7 @@ const Home = () => {
                     }}
                     />
 
-                    <input type="number" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Number'/>
+                    <input type="number" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
                 </div>
                 <button onClick={handledemosubmit} className="btn select-submit-btn">Submit</button>
             </div>
@@ -219,10 +225,15 @@ const Home = () => {
               <img src={Hands} alt="Join Hands" className='joinhands-img' />
             <span className='hero-right-bottom-divider'></span>
               <div className="hero-right-bottom-sub-cont">
-              Join hands with us; together, we can transform education.
+              {/* Join hands with us; together, we can transform education. */}
+              Discover a Multilingual Communication Platform seamlessly integrated with business essentials 
+              and an AI-powered ERP. Master this powerhouse in just 5 minutes! 
+              Elevate your business growth with key success elements. <br /> 
               </div>
+              <span style={{fontSize:"1vw", width:"43vw", fontWeight:"600"}}> 🌐💼🤖 #BusinessSuccess #MultilingualPlatform #AI ERP #5MinuteMastery </span> 
             </div>
           </div>
+
         </div>
       </div>
   )

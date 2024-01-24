@@ -17,7 +17,7 @@ const Footer = () => {
     }
 
   return (
-    <div className="Footer" >
+    <div className="Footer" id='Footer' >
         <div className="footer-top">
             <div className="footer-logo-cont">
                 <a href="/"><img src={Logo} alt="Soomuchai logo" className="footer-logo" /></a>

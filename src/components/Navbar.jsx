@@ -6,8 +6,7 @@ import Logo from '../assets/logo/logo.svg';
 const Navbar = () => {
   const [modelactive, setModelactive] = useState(false);
   const navbarItems=["Join Hands", "Blogs", "Testimonials","Why we?","FAQ's", "Contact us", "Login"]
-  // const navbarItems=["Join Hands", "Blogs", "Press Release", "Testimonials","Why we?","FAQ's", "Contact us", "Login"]
-
+ 
   const togglemodel=()=>{
     // Send Data to backend and schedule a call
     setModelactive(!modelactive);
@@ -20,13 +19,13 @@ const Navbar = () => {
           <ul>
           {navbarItems.map((items) => (
             <li key={(items.replaceAll(' ', '').toLowerCase())}>
-              <Link to={'/'+(items.replaceAll(' ', '').toLowerCase())}>{items}</Link>
+              <Link to={items.includes("Login")?'https://web.soomuch.ai':'/'+(items.replaceAll(' ', '').toLowerCase())}>{items}</Link>
             </li>
           ))}
           <button onClick={togglemodel} className='btn'>Book a Demo</button>
           </ul>
         </div>
-   
+              
       {/* Book a Demo */}
       {modelactive===true?<>
           <div className="demo-model-cont">

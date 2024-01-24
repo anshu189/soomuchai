@@ -51,7 +51,7 @@ const Testimonials = () => {
             <h1 className='testi-heading'>Testimonials</h1>
             <h3 className='testi-subheading'>Real Voices, Real Triumphs: Hear the Echoes of Success!</h3>
           </div>
-
+          <hr className="testi-divider-1" />      
           <div className="testi-bottom-cont">
 
             <div className="testi-bottom-left">
@@ -74,8 +74,8 @@ const Testimonials = () => {
                   <div className="testi-review testi-special-review">{items.review}</div>
                   <span className="testi-divider"></span>
                   <div className="testi-bywhom">
-                    <div className="testi-name">{items.name}</div>
-                    <div className="testi-company">{items.company}</div>
+                    <div className="testi-name testi-special-name">{items.name}</div>
+                    <div className="testi-company testi-special-company">{items.company}</div>
                   </div>
                 </div>
               </>})}

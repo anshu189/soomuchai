@@ -6,8 +6,8 @@ const Error404 = () => {
     <>
       <div className="main-cont">
         <Navbar/>
-        <div className="main-sub-cont">
-          <div>Error404: Not Found</div>
+        <div className="main-sub-cont" style={{height:"calc(100vh - 110px)"}}>
+          <div style={{fontSize:"3vw"}}>Error404: Not Found</div>
         </div>
       </div>
     </>

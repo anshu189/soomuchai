@@ -5,7 +5,6 @@ import BusinessEssentials from './components/BusinessEssentials';
 import OtherEssentials from './components/OtherEssentials';
 
 function App() {
-
   return (
     <div className='main-app'>
       <div className="header-main-cont">
