@@ -30,19 +30,19 @@ const Contact = () => {
                 <div className="contact-phone-email">
                   <h3>General Inquiries:</h3>
                   <span><MdEmail/><h3>info@soomuch.ai</h3></span>
-                  <span><IoIosCall/><h3>[+1(555)123-4567]</h3></span>
+                  <span><IoIosCall/><h3>+1(555)123-4567</h3></span>
                 </div>
 
                 <div className="contact-phone-email">
                   <h3>Sales and Partnerships:</h3>
                   <span><MdEmail/><h3>sales@soomuch.ai</h3></span>
-                  <span><IoIosCall/><h3>[+1(555)987-6543]</h3></span>
+                  <span><IoIosCall/><h3>+1(555)987-6543</h3></span>
                 </div>
 
                 <div className="contact-phone-email">
                   <h3>Technical Support:</h3>
                   <span><MdEmail/><h3>support@soomuch.ai</h3></span>
-                  <span><IoIosCall/><h3>[+1(555)789-0123]</h3></span>
+                  <span><IoIosCall/><h3>+1(555)789-0123</h3></span>
                 </div>
 
                 <div className="contact-phone-email">

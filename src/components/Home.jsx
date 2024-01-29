@@ -42,18 +42,15 @@ const Home = () => {
   'Send’s English SMS to parents despite only 30% of them understanding.']
 
   const langoptions = [
-    {value:"",label:"Choose a language",disabled: true},
     {value:"Telugu",label:"Telugu"},
     {value:"Hindi",label:"Hindi"},
     {value:"English",label:"English"},
   ]
   const connectoptions = [
-    {value:"",label:"Parental Connect",disabled: true},
     {value:"SMS",label:"SMS"},
     {value:"Whatsapp",label:"Whatsapp"},
   ]
   const riskoptions = [
-    {value:"",label:"Risk Analysis",disabled: true},
     {value:"Yes",label:"Yes"},
     {value:"No",label:"No"},
   ]
@@ -165,7 +162,7 @@ const Home = () => {
             </div>
 
             <div className="hero-left-bottom-cont">
-              <span style={{fontSize:'1.7vw', fontWeight:"800"}}>Prime Minister's Support: Narendra Modi</span>
+              <span style={{fontSize:'2vw', fontWeight:"200"}}>Prime Minister's Support: <span style={{fontWeight:"600", border:"1px solid #f7f7f7", borderRadius:"6px", padding:"0 0.5vw", background:"#f7f7f7", color:"#8400cf", userSelect:"none"}}>Narendra Modi</span></span>
               <span className='hero-bottom-divider'></span>
               <span className='play-icon' onClick={()=>setVideostate(true)}><HiOutlinePlayCircle />See how it works</span>
               <div className="hero-left-bottom-sub-cont">
@@ -186,99 +183,128 @@ const Home = () => {
 
               <div className="hero-right-top-heading">30% Growth<br/>with 30 seconds<br/>live demo</div>
                 <div className="select-section">
-                    <Select 
-                    ref={selectInputRef1}
-                    className='individual-select' 
-                    onChange={setLangvalue} 
-                    options={langoptions} 
-                    defaultValue={langvalue} 
-                    placeholder="Choose Language"
-                    theme={customTheme}
-                    isOptionDisabled={(option) => option.disabled}
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        boxShadow: "none",
-                        border: "none",
-                        width:"100%",
-                        padding:"0.1rem",
-                        cursor:"pointer",
-                        fontFamily:"Helvetica",
-                        fontWeight:"400"
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
-                        color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
-                        color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
-                        cursor:"pointer"
-                      }),
-                    }}
-                    />
+                    <div className="select-cont">
+                      <div className="select-label">Choose Language</div>
+                      <Select 
+                      ref={selectInputRef1}
+                      className='individual-select' 
+                      onChange={setLangvalue} 
+                      options={langoptions} 
+                      defaultValue={langvalue}
+                      placeholder="Choose Language"
+                      theme={customTheme}
+                      isOptionDisabled={(option) => option.disabled}
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          width:"15vw",
+                          border: "none",
+                          borderRadius:"0 5px 5px 0",
+                          display:"flex",
+                          fontWeight:"400",
+                          cursor:"pointer",
+                          padding:"0.1rem",
+                          boxShadow: "none",
+                          justifyContent:"right",
+                          fontFamily:"Helvetica",
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
+                          color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
+                          color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
+                          cursor:"pointer"
+                        }),
+                        menu:(provided,state) => ({
+                          ...provided,
+                          width: '15vw',
+                        })
+                      }}
+                      />
+                    </div>
 
-                    <Select 
-                    ref={selectInputRef2}
-                    className='individual-select' 
-                    onChange={setConnectvalue} 
-                    options={connectoptions} 
-                    defaultValue={connectvalue} 
-                    placeholder="Parental Connect"
-                    theme={customTheme}
-                    isOptionDisabled={(option) => option.disabled}
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        boxShadow: "none",
-                        border: "none",
-                        width:"100%",
-                        padding:"0.1rem",
-                        cursor:"pointer",
-                        fontFamily:"Helvetica",
-                        fontWeight:"400"
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
-                        color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
-                        color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
-                        cursor:"pointer"
-                      })
-                    }}
-                    />
+                    <div className="select-cont">
+                      <div className="select-label">Parental Connect</div>
+                      <Select 
+                      ref={selectInputRef2}
+                      className='individual-select' 
+                      onChange={setConnectvalue} 
+                      options={connectoptions} 
+                      defaultValue={connectvalue} 
+                      placeholder="Parental Connect"
+                      theme={customTheme}
+                      isOptionDisabled={(option) => option.disabled}
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          width:"15vw",
+                          boxShadow: "none",
+                          border: "none",
+                          borderRadius:"0 5px 5px 0",
+                          padding:"0.1rem",
+                          cursor:"pointer",
+                          fontFamily:"Helvetica",
+                          fontWeight:"400"
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
+                          color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
+                          color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
+                          cursor:"pointer"
+                        }),
+                        menu:(provided,state) => ({
+                          ...provided,
+                          width: '15vw',
+                        })
+                      }}
+                      />
+                    </div>
                     
-                    <Select 
-                    ref={selectInputRef3}
-                    className='individual-select' 
-                    onChange={setRiskvalue} 
-                    options={riskoptions} 
-                    defaultValue={riskvalue} 
-                    placeholder="Analyze Risk"
-                    theme={customTheme}
-                    isOptionDisabled={(option) => option.disabled}
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        boxShadow: "none",
-                        border: "none",
-                        width:"100%",
-                        padding:"0.1rem",
-                        cursor:"pointer",
-                        fontFamily:"Helvetica",
-                        fontWeight:"400"
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
-                        color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
-                        color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
-                        cursor:"pointer"
-                      })
-                    }}
-                    />
-
-                    <input ref={selectInputRef4} pattern='((\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}' maxlength="10" type="text" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
+                    <div className="select-cont">
+                    <div className="select-label">Risk Analysis</div>
+                      <Select 
+                      ref={selectInputRef3}
+                      className='individual-select' 
+                      onChange={setRiskvalue} 
+                      options={riskoptions} 
+                      defaultValue={riskvalue} 
+                      placeholder="Analyze Risk"
+                      theme={customTheme}
+                      isOptionDisabled={(option) => option.disabled}
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          width:"15vw",
+                          boxShadow: "none",
+                          border: "none",
+                          borderRadius:"0 5px 5px 0",
+                          padding:"0.1rem",
+                          cursor:"pointer",
+                          fontFamily:"Helvetica",
+                          fontWeight:"400"
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
+                          color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
+                          color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
+                          cursor:"pointer"
+                        }),
+                        menu:(provided,state) => ({
+                          ...provided,
+                          width: '15vw',
+                        })
+                      }}
+                      />
+                    </div>
+                    
+                    <div className="select-cont">
+                      <div className="select-label">Whatsapp Number</div>
+                      <input ref={selectInputRef4} pattern='((\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}' maxlength="10" type="text" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
+                    </div>
                 </div>
-                <button onClick={handledemosubmit} className="btn select-submit-btn">Submit</button>
+                <button onClick={handledemosubmit} className="btn select-submit-btn"><a href="/">Submit</a></button>
             </div>
 
             <div className="hero-right-bottom-cont">
