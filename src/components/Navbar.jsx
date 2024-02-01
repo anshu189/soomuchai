@@ -23,11 +23,12 @@ const Navbar = () => {
             </li>
           ))}
           <button onClick={togglemodel} className='btn'>Book a Demo</button>
+          <div id="gtranslator-cont"></div>
           </ul>
         </div>
               
       {/* Book a Demo */}
-      {modelactive===true?<>
+      {/* {modelactive===true?<>
           <div className="demo-model-cont">
               <div className="demo-overlay-cont">
                   <div className="demo-model">
@@ -47,8 +48,6 @@ const Navbar = () => {
                             <div onClick={()=>setModelactive()} className="demo-model-close-btn">Close</div>
                       </div>    
                       <div className="demo-model-bottom">
-                          {/* <div className="demo-model-bottom-subheading">Call will start in 15 seconds.</div> */}
-                          {/* <hr className="demo-model-bottom-divider"></hr> */}
                           <div className="demo-model-bottom-last-points">
                             <div className="demo-model-bottom-last-point">Examination Dates</div>
                             <div className="demo-model-bottom-last-point">Results</div>
@@ -58,8 +57,7 @@ const Navbar = () => {
                   </div>
               </div> 
           </div>
-          </>:''
-      }
+          </>:''} */}
     </div>
   )
 }

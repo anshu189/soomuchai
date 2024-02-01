@@ -17,6 +17,7 @@ const Home = () => {
   const [connectvalue, setConnectvalue] = useState("");
   const [Otpopup, setOtpopup] = useState(false);
   const [Videostate, setVideostate] = useState(false);
+  const [modelactive, setModelactive] = useState(false);
   const [getOTP, setGetOTP] = useState("");
   const selectInputRef1 = useRef();
   const selectInputRef2 = useRef();
@@ -30,7 +31,8 @@ const Home = () => {
         ...theme.colors,
         primary25:"#7001DC",
         primary:"#7001DC",
-        text: '#2c2c2c',
+        text: '#fff',
+        neutral50: "#fff",
       }
     }
   }
@@ -65,18 +67,21 @@ const Home = () => {
 
   // Handle the Demo Function 
   const handledemosubmit=()=>{
+
     const demolang = langvalue.value;
     const connectoption = connectvalue.value;
     const riskoption = riskvalue.value;
-
+    
     if((demolang && connectoption && riskoption) && !(optnum.length!==10)){
-      setOtpopup(true);
+      // setOtpopup(true);
+      setModelactive(true);
       // Send Data to backend and scehdule a demo
-
+      
     }
     else{
       alert("Please Choose all the remaining fields!")
-      setOtpopup(false);
+      // setOtpopup(false);
+      setModelactive(false);
     }
   }
 
@@ -114,8 +119,42 @@ const Home = () => {
               </video>
             </span>
           </>}
+          
+          {/* Book a Demo */}
+          {modelactive===true?<>
+              <div className="demo-model-cont">
+                  <div className="demo-overlay-cont">
+                      <div className="demo-model">
+                          <div className="demo-model-top">
+                              <div className="demo-model-heading">Note: You will get calls assuming you are a parent</div>
+                          </div>             
+                          <div className="demo-model-mid">
+                                <div className="demo-model-points">
+                                  1. 100% Delivery of your child Information <br /> 
+                                  2. Multiple retry attempts in-case call is not picked. <br /> 
+                                  3. Demo Duration: Minimum of 30 Seconds to maximum of 45 sec <br /> 
+                                  4. Please pick up next 3 calls <br />
+                                  5. You will receive calls from this number: 8885035035 <br />
+                                  6. Demo School Name: SOOMUCH Educational institution <br />
+                                  7. Call will start in 15 seconds. <br />
+                                </div>
+                                <div onClick={()=>setModelactive()} className="demo-model-close-btn">Close</div>
+                          </div>    
+                          <div className="demo-model-bottom">
+                              {/* <div className="demo-model-bottom-subheading">Call will start in 15 seconds.</div> */}
+                              {/* <hr className="demo-model-bottom-divider"></hr> */}
+                              <div className="demo-model-bottom-last-points">
+                                <div className="demo-model-bottom-last-point">Examination Dates</div>
+                                <div className="demo-model-bottom-last-point">Results</div>
+                                <div className="demo-model-bottom-last-point">Fee Follow-ups</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div> 
+              </div>
+              </>:''}
 
-          {Otpopup && <>
+          {/* {Otpopup && <>
             <div className="demo-model-cont">
             <span style={{zIndex:"9999999"}} className='closeicon' onClick={()=>setOtpopup(false)}><RiCloseFill/></span>
               <div className="demo-overlay-cont">
@@ -134,7 +173,7 @@ const Home = () => {
                   </div>
               </div> 
             </div>
-          </>}
+          </>} */}
 
           <div className="hero-left">
 
@@ -162,7 +201,7 @@ const Home = () => {
             </div>
 
             <div className="hero-left-bottom-cont">
-              <span style={{fontSize:'2vw', fontWeight:"200"}}>Prime Minister's Support: <span style={{fontWeight:"600", border:"1px solid #f7f7f7", borderRadius:"6px", padding:"0 0.5vw", background:"#f7f7f7", color:"#8400cf", userSelect:"none"}}>Narendra Modi</span></span>
+              <span style={{fontFamily:"Raleway", fontSize:'2vw', fontWeight:"200"}}>Prime Minister's Support: <span style={{fontWeight:"700", border:"1px solid #f7f7f7", borderRadius:"6px", padding:"0 0.5vw", background:"#f7f7f7", color:"#8400cf", userSelect:"none"}}>Narendra Modi</span></span>
               <span className='hero-bottom-divider'></span>
               <span className='play-icon' onClick={()=>setVideostate(true)}><HiOutlinePlayCircle />See how it works</span>
               <div className="hero-left-bottom-sub-cont">
@@ -198,26 +237,29 @@ const Home = () => {
                         control: (provided, state) => ({
                           ...provided,
                           width:"15vw",
-                          border: "none",
+                          // border: "1px solid #fff",
                           borderRadius:"0 5px 5px 0",
                           display:"flex",
                           fontWeight:"400",
                           cursor:"pointer",
                           padding:"0.1rem",
                           boxShadow: "none",
+                          color:"#fff",
                           justifyContent:"right",
                           fontFamily:"Helvetica",
+                          background:"transparent"
                         }),
                         option: (provided, state) => ({
                           ...provided,
                           backgroundColor: state.isSelected ? '#7001DC' : 'inherit',
-                          color: state.isFocused ? '#2c2c2c' : '#2c2c2c',
-                          color: state.isSelected ? '#f7f7f7' : '#2c2c2c',
-                          cursor:"pointer"
+                          color: state.isFocused ? '#fff' : 'red',
+                          color: state.isSelected ? '#fff' : '#2c2c2c',
+                          cursor:"pointer",
                         }),
                         menu:(provided,state) => ({
                           ...provided,
                           width: '15vw',
+                          color:"#fff"
                         })
                       }}
                       />
@@ -239,7 +281,8 @@ const Home = () => {
                           ...provided,
                           width:"15vw",
                           boxShadow: "none",
-                          border: "none",
+                          // border: "1px solid #fff",
+                          background:"transparent",
                           borderRadius:"0 5px 5px 0",
                           padding:"0.1rem",
                           cursor:"pointer",
@@ -277,7 +320,8 @@ const Home = () => {
                           ...provided,
                           width:"15vw",
                           boxShadow: "none",
-                          border: "none",
+                          // border: "1px solid #fff",
+                          background:"transparent",
                           borderRadius:"0 5px 5px 0",
                           padding:"0.1rem",
                           cursor:"pointer",
@@ -299,9 +343,9 @@ const Home = () => {
                       />
                     </div>
                     
-                    <div className="select-cont">
+                    <div className="select-cont" style={{gap:"0.4rem"}}>
                       <div className="select-label">Whatsapp Number</div>
-                      <input ref={selectInputRef4} pattern='((\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}' maxlength="10" type="text" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
+                      <input ref={selectInputRef4} pattern="^[0-9]{9}$" required maxlength="10" type="number" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Enter Number'/>
                     </div>
                 </div>
                 <button onClick={handledemosubmit} className="btn select-submit-btn"><a href="/">Submit</a></button>
@@ -311,7 +355,7 @@ const Home = () => {
               <img src={Hands} alt="Join Hands" className='joinhands-img' />
             <span className='hero-right-bottom-divider'></span>
               <div className="hero-right-bottom-sub-cont">
-              {/* Join hands with us; together, we can transform education. */}
+              Join hands with us; together, we can transform education. <br /><br />
               Discover a Multilingual Communication Platform seamlessly integrated with business essentials 
               and an AI-powered ERP. Master this powerhouse in just 5 minutes! 
               Elevate your business growth with key success elements. <br /> 

@@ -87,8 +87,8 @@ const BusinessEssentials = () => {
               <div className='circle1 cpink'></div>
               <div className='circle2 cviolet'></div>
           </div>
-          <div ref={titleref} className='secondary-heading' style={{width:"43vw"}}>
-          🚀 Dive into 10 Success Elements for 30% Business Growth
+          <div ref={titleref} className='secondary-heading' style={{width:"100vw"}}>
+          🚀 Business essentials upto 30% business growth
           </div>
           <div className='secondary-bottom-cont'>
               <div className='bubbles-cont'>
