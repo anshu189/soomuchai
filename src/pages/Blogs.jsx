@@ -6,7 +6,7 @@ import Blog from '../components/Blog';
 const Blogs = () => {
   return (
     <>
-      <div className="main-cont" >
+      <div className="blogs-main-cont" >
         <Navbar/>
         <div className="main-sub-cont">
           <Blog/>

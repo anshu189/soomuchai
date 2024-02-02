@@ -1,18 +1,41 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import Logo from '../assets/logo/logo.svg';
+import { RiMenu3Fill } from "react-icons/ri";
+
 // import Demomodel from '../model/demomodel';
 
 const Navbar = () => {
   const [modelactive, setModelactive] = useState(false);
   const navbarItems=["Join Hands", "Blogs", "Testimonials","Why we?","FAQ's", "Contact us", "Login"]
- 
+  const [isLinksVisible, setLinksVisible] = useState(false);
+
+  const toggleLinks = () => {
+    setLinksVisible(!isLinksVisible);
+  };
   const togglemodel=()=>{
     // Send Data to backend and schedule a call
     setModelactive(!modelactive);
   }
 
   return (
+    <>
+    {/* Hamburger Menu */}
+    <div className="ham-nav">
+          <div className="navbar-logo"> <a href="/"><img src={Logo} alt="soomuch.ai" /></a></div>
+          <div id="myLinks" style={{ display: isLinksVisible ? 'block' : 'none' }}>
+            <a href="">Join Hands</a>
+            <a href="">Blogs</a>
+            <a href="">Testimonials</a>
+            <a href="">Why we?</a>
+            <a href="">FAQ's</a>
+            <a href="">Contact us</a>
+            <a href="">Login</a>
+          </div>
+          <a href="javascript:void(0);" className="ham-icon-cont" onClick={toggleLinks}>
+            <span className='ham-icon'><RiMenu3Fill /></span>
+          </a>
+        </div>
     <div className="navbar-cont">
         <div className="navbar-logo"> <a href="/"><img src={Logo} alt="soomuch.ai" /></a></div>
         <div className="navbar-items">
@@ -59,7 +82,7 @@ const Navbar = () => {
           </div>
           </>:''} */}
     </div>
-  )
+    </>)
 }
 
 export default Navbar

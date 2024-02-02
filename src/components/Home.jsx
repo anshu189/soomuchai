@@ -17,6 +17,7 @@ const Home = () => {
   const [Otpopup, setOtpopup] = useState(false);
   const [Videostate, setVideostate] = useState(false);
   const [getOTP, setGetOTP] = useState("");
+  const [modelactive, setModelactive] = useState(false);
   const selectInputRef1 = useRef();
   const selectInputRef2 = useRef();
   const selectInputRef3 = useRef();
@@ -30,6 +31,7 @@ const Home = () => {
         primary25:"#7001DC",
         primary:"#7001DC",
         text: '#2c2c2c',
+        neutral50:"#fff"
       }
     }
   }
@@ -62,20 +64,28 @@ const Home = () => {
         }
     };
 
-  // Handle the Demo Function 
-  const handledemosubmit=()=>{
+    // const togglemodel=(e)=>{
+    //   // e.preventDefault();
+    //   // Send Data to backend and schedule a call
+    //   setModelactive(!modelactive);
+    // }
+
+    // Handle the Demo Function 
+    const handledemosubmit=(e)=>{
     const demolang = langvalue.value;
     const connectoption = connectvalue.value;
     const riskoption = riskvalue.value;
 
     if((demolang && connectoption && riskoption) && !(optnum.length!==10)){
-      setOtpopup(true);
+      // setOtpopup(true);
+      setModelactive(true)
       // Send Data to backend and scehdule a demo
-
+      
     }
     else{
       alert("Please Choose all the remaining fields!")
-      setOtpopup(false);
+      // setOtpopup(false);
+      setModelactive(false)
     }
   }
 
@@ -95,10 +105,72 @@ const Home = () => {
         }
     };
 
-  return (
+  return (<>
+  {/* Gradient BG */}
+    <div className='gradient-bg' style={{position: 'absolute'}}>
+        <svg xmlns='http://www.w3.org/2000/svg'>
+            <defs>
+                <filter id='goo'>
+                    <feGaussianBlur in='SourceGraphic' stdDeviation='10' result='blur' />
+                    <feColorMatrix
+                        in='blur'
+                        mode='matrix'
+                        values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8'
+                        result='goo'
+                    />{" "}
+                    <feBlend in='SourceGraphic' in2='goo' />
+                </filter>
+            </defs>
+        </svg>
+        <div className='gradients-container'>
+            <div className='g1'></div>
+            <div className='g2'></div>
+            <div className='g3'></div>
+            <div className='interactive'></div>
+        </div>
+      </div>
+                
       <div className="home-main-cont">
+
+        {/* Book a Demo */}
+        {modelactive===true?<>
+            <div className="demo-model-cont">
+                <div className="demo-overlay-cont">
+                    <div className="demo-model">
+                        <div className="demo-model-top">
+                            <div className="demo-model-heading">Note: You will get calls assuming you are a parent</div>
+                        </div>             
+                        <div className="demo-model-mid">
+                              <div className="demo-model-points">
+                                1. 100% Delivery of your child Information <br /> 
+                                2. Multiple retry attempts in-case call is not picked. <br /> 
+                                3. Demo Duration: Minimum of 30 Seconds to maximum of 45 sec <br /> 
+                                4. Please pick up next 3 calls <br />
+                                5. You will receive calls from this number: 8885035035 <br />
+                                6. Demo School Name: SOOMUCH Educational institution <br />
+                                7. Call will start in 15 seconds. <br />
+                              </div>
+                              <div onClick={()=>setModelactive()} className="demo-model-close-btn">Close</div>
+                        </div>    
+                        <div className="demo-model-bottom">
+                            <div className="demo-model-bottom-last-points">
+                              <div className="demo-model-bottom-last-point">Examination Dates</div>
+                              <div className="demo-model-bottom-last-point">Results</div>
+                              <div className="demo-model-bottom-last-point">Fee Follow-ups</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            </>:''}
+
         <Navbar/>
         <div className="hero-main-cont">
+          
+          {/* Scroll Mouse Animation*/}
+          <div className="mouse-cont">
+            <div className="scroll-mouse"></div>
+          </div>
 
           {Videostate && <>
             <span className='closeicon' onClick={()=>setVideostate(false)}><RiCloseFill/></span>
@@ -131,46 +203,46 @@ const Home = () => {
             </div>
           </>}
 
-                    <div className='hero-left'>
-                        <div className='hero-left-top-cont'>
-                            <div className='hero-heading'>90% Educational Institutions</div>
-                            <div className='tab'>
-                                <button
-                                    className={
-                                        "hero-tab-btn" + (tabscntr === 1 ? " hero-tab-active" : "")
-                                    }></button>
-                                <button
-                                    className={
-                                        "hero-tab-btn" + (tabscntr === 2 ? " hero-tab-active" : "")
-                                    }></button>
-                                <button
-                                    className={
-                                        "hero-tab-btn" + (tabscntr === 3 ? " hero-tab-active" : "")
-                                    }></button>
-                                <button
-                                    className={
-                                        "hero-tab-btn" + (tabscntr === 4 ? " hero-tab-active" : "")
-                                    }></button>
-                                <button
-                                    className={
-                                        "hero-tab-btn" + (tabscntr === 5 ? " hero-tab-active" : "")
-                                    }></button>
-                            </div>
-                            <div className='hero-subheading'>
-                                <Typewriter
-                                    cursor
-                                    loop={100}
-                                    cursorStyle='|'
-                                    deleteSpeed={1}
-                                    typeSpeed={100}
-                                    delaySpeed={4000}
-                                    words={subheading}
-                                    onDelay={handletabs}
-                                />
-                            </div>
-                        </div>
+          <div className='hero-left'>
+              <div className='hero-left-top-cont'>
+                  <div className='hero-heading'>90% Educational Institutions</div>
+                  <div className='tab'>
+                      <button
+                          className={
+                              "hero-tab-btn" + (tabscntr === 1 ? " hero-tab-active" : "")
+                          }></button>
+                      <button
+                          className={
+                              "hero-tab-btn" + (tabscntr === 2 ? " hero-tab-active" : "")
+                          }></button>
+                      <button
+                          className={
+                              "hero-tab-btn" + (tabscntr === 3 ? " hero-tab-active" : "")
+                          }></button>
+                      <button
+                          className={
+                              "hero-tab-btn" + (tabscntr === 4 ? " hero-tab-active" : "")
+                          }></button>
+                      <button
+                          className={
+                              "hero-tab-btn" + (tabscntr === 5 ? " hero-tab-active" : "")
+                          }></button>
+                  </div>
+                  <div className='hero-subheading'>
+                      <Typewriter
+                          cursor
+                          loop={100}
+                          cursorStyle='|'
+                          deleteSpeed={1}
+                          typeSpeed={100}
+                          delaySpeed={4000}
+                          words={subheading}
+                          onDelay={handletabs}
+                      />
+                  </div>
+          </div>
 
-            <div className="hero-left-bottom-cont">
+            {/* <div className="hero-left-bottom-cont">
               <span style={{fontSize:'2vw', fontWeight:"200"}}>Prime Minister's Support: <span style={{fontWeight:"600", border:"1px solid #f7f7f7", borderRadius:"6px", padding:"0 0.5vw", background:"#f7f7f7", color:"#8400cf", userSelect:"none"}}>Narendra Modi</span></span>
               <span className='hero-bottom-divider'></span>
               <span className='play-icon' onClick={()=>setVideostate(true)}><HiOutlinePlayCircle />See how it works</span>
@@ -181,6 +253,27 @@ const Home = () => {
               this platform to the education sector, connecting institutions, 
               parents, and students. Together, let's transform communication in education! 
               </div>
+            </div> */}
+
+            <div className="hero-left-bottom-cont">
+              <div className="hero-left-bottom-cont1"><span className="see-how-it-works" onClick={()=>setVideostate(true)}>See how <br /> it works<HiOutlinePlayCircle style={{width:"35px", height:"35px"}} /></span></div>
+              <div className="hero-left-bottom-cont2">
+                <span className="pm-support">Prime Minister's Support:</span>
+                
+                <div className="hero-left-bottom-sub-cont-hightlight">
+                <span style={{margin:"0 5px 0 0",fontWeight:"600", border:"1px solid #f7f7f7", borderRadius:"6px", padding:"0 0.2vw", background:"#f7f7f7", color:"#8400cf", userSelect:"none"}}>Narendra Modi</span>
+                recognizes the importance of a multilingual communication platform.
+                </div>
+
+                <div className="hero-left-bottom-sub-cont">
+                🚀Education Transformation: We're the pioneers bringing 
+                this platform to the education sector, connecting institutions, 
+                parents, and students. Together, let's transform communication in education! 
+                </div>
+
+              </div>
+              {/* <span className='hero-bottom-divider'></span>
+              <span className='play-icon' onClick={()=>setVideostate(true)}><HiOutlinePlayCircle />See how it works</span> */}
             </div>
 
           </div>
@@ -206,10 +299,12 @@ const Home = () => {
                       styles={{
                         control: (provided, state) => ({
                           ...provided,
-                          width:"15vw",
+                          width:"18vw",
                           border: "none",
-                          borderRadius:"0 5px 5px 0",
+                          borderRadius:"0",
                           display:"flex",
+                          borderBottom:"1px solid #fff",
+                          background:"transparent",
                           fontWeight:"400",
                           cursor:"pointer",
                           padding:"0.1rem",
@@ -246,10 +341,12 @@ const Home = () => {
                       styles={{
                         control: (provided, state) => ({
                           ...provided,
-                          width:"15vw",
+                          width:"18vw",
                           boxShadow: "none",
                           border: "none",
-                          borderRadius:"0 5px 5px 0",
+                          borderBottom:"1px solid #fff",
+                          background:"transparent",
+                          borderRadius:"0",
                           padding:"0.1rem",
                           cursor:"pointer",
                           fontFamily:"Helvetica",
@@ -284,10 +381,12 @@ const Home = () => {
                       styles={{
                         control: (provided, state) => ({
                           ...provided,
-                          width:"15vw",
+                          width:"18vw",
                           boxShadow: "none",
                           border: "none",
-                          borderRadius:"0 5px 5px 0",
+                          borderBottom:"1px solid #fff",
+                          background:"transparent",
+                          borderRadius:"0",
                           padding:"0.1rem",
                           cursor:"pointer",
                           fontFamily:"Helvetica",
@@ -308,11 +407,14 @@ const Home = () => {
                       />
                     </div>
                     
-                    <div className="select-cont">
+                    <div className="select-cont select-whatsapp" >
                       <div className="select-label">Whatsapp Number</div>
                       <input ref={selectInputRef4} pattern='((\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}' maxlength="10" type="text" className="individual-select select-otpnum-input" onChange={(e)=> setOtpnum(e.target.value)} placeholder='Whatsapp Number'/>
                     </div>
                 </div>
+                <button onClick={handledemosubmit} className='btn select-submit-btn'>
+                  <a href='#' onClick={(e)=>e.preventDefault()}>Submit</a>
+                </button>
             </div>
 
             <div className="hero-right-bottom-cont">
@@ -324,14 +426,14 @@ const Home = () => {
               and an AI-powered ERP. Master this powerhouse in just 5 minutes! 
               Elevate your business growth with key success elements. <br /> 
               </div>
-              <span style={{fontSize:"1vw", width:"43vw", fontWeight:"600"}}> 🌐💼🤖 #BusinessSuccess #MultilingualPlatform #AI ERP #5MinuteMastery </span> 
+              <span className="home-hashtags" style={{fontSize:"1vw", width:"43vw", fontWeight:"600"}}> 🌐💼🤖 #BusinessSuccess #MultilingualPlatform #AI ERP #5MinuteMastery </span> 
             </div>
 
           </div>
 
         </div>
       </div>
-  )
+      </>)
 }
 
 export default Home
