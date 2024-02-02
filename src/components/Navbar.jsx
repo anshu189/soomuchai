@@ -24,13 +24,13 @@ const Navbar = () => {
     <div className="ham-nav">
           <div className="navbar-logo"> <a href="/"><img src={Logo} alt="soomuch.ai" /></a></div>
           <div id="myLinks" style={{ display: isLinksVisible ? 'block' : 'none' }}>
-            <a href="">Join Hands</a>
-            <a href="">Blogs</a>
-            <a href="">Testimonials</a>
-            <a href="">Why we?</a>
-            <a href="">FAQ's</a>
-            <a href="">Contact us</a>
-            <a href="">Login</a>
+            <a href="/joinhands">Join Hands</a>
+            <a href="/blogs">Blogs</a>
+            <a href="/testimonials">Testimonials</a>
+            <a href="/whywe">Why we?</a>
+            <a href="/faq's">FAQ's</a>
+            <a href="/contactus">Contact us</a>
+            <a href="https://web.soomuch.ai">Login</a>
           </div>
           <a href="javascript:void(0);" className="ham-icon-cont" onClick={toggleLinks}>
             <span className='ham-icon'><RiMenu3Fill /></span>
